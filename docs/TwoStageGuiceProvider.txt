@@ -53,7 +53,7 @@ Imagine the following service interface:
 </div>
 
 It has different setup methods for different clients.  This example is to
-illustrate that different clients my setup the service differently.  In real
+illustrate that different clients might setup the service differently.  In real
 life, there would be no dependency from the service upon its clients.  For a
 more concrete example, the service might be a web server class and each client
 might configure a different set of URLs.
@@ -568,7 +568,7 @@ right implementation and customize it appropriately.
 
 This pattern for using Guice might prove useful.
 
-Another possibility is that the way =Serice= gets customized is all wrong.  I
+Another possibility is that the way =Service= gets customized is all wrong.  I
 could conceive of a =Customizer= object that would get injected into
 =GenericModule.provideService()=.  =Client1Module= and =Client2Module= would
 provide bindings to specific types of =Customizer=, and that would be the end
