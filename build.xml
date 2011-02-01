@@ -35,9 +35,11 @@
         <property name="binDir" value="bin"/>
         <property name="classesDir" value="classes"/>
         <property name="docsDir" value="docs"/>
+        <property name="testDir" value="tests"/>
 
         <property name="srcFiles" value="${srcDir}/**"/>
         <property name="docsFiles" value="${docsDir}/**"/>
+        <property name="testFiles" value="${testDir}/**"/>
 
         <property name="reportsDir" value="reports"/>
         <property name="testReportsDir" value="${reportsDir}/tests"/>
@@ -50,11 +52,26 @@
         Compilation
     -->
 
-    <target name="compile" depends="init"
-            description="Compiles all classes">
+    <target name="compile" depends="compile.src, compile.tests"
+            description="Compiles all classes"/>
+
+    <target name="compile.src" depends="init">
         <mkdir dir="${classesDir}"/>
         <javac destdir="${classesDir}" debug="on">
             <src path="${srcDir}"/>
+            <classpath>
+                <path refid="classpath.guice"/>
+                <path refid="classpath.junit"/>
+                <path refid="classpath.jmock"/>
+            </classpath>
+            <patternset refid="all.sources"/>
+        </javac>
+    </target>
+
+    <target name="compile.tests" depends="init">
+        <mkdir dir="${classesDir}"/>
+        <javac destdir="${classesDir}" debug="on">
+            <src path="${testDir}"/>
             <classpath>
                 <path refid="classpath.guice"/>
                 <path refid="classpath.junit"/>
@@ -74,10 +91,9 @@
             </classpath>
             <formatter type="xml"/>
             <batchtest fork="yes" todir="${testReportsDir}">
-                <fileset dir="${srcDir}">
-                    <include name="**/*_jMock.java"/>
-                    <include name="**/*_EasyMock.java"/>
-                    <include name="**/*_Mockito.java"/>
+                <fileset dir="${testDir}">
+                    <include name="**/Test*.java"/>
+                    <exclude name="**/AllTests.java"/>
                 </fileset>
             </batchtest>
         </junit>
