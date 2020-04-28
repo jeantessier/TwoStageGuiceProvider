@@ -32,7 +32,10 @@
 
 import client1.*;
 import client2.*;
-import com.google.inject.*;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.google.inject.Key;
+import com.google.inject.Module;
 import com.google.inject.name.*;
 import generic.*;
 import static org.hamcrest.Matchers.*;

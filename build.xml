@@ -5,7 +5,7 @@
     </description>
 
     <property environment="env"/>
-    
+
     <patternset id="all.sources">
         <include name="**/*.java"/>
     </patternset>
@@ -17,7 +17,11 @@
     </path>
 
     <path id="classpath.junit">
-        <pathelement location="${env.JUNIT_HOME}/junit.jar"/>
+        <fileset dir="${env.JUNIT_HOME}">
+            <include name="**/*.jar"/>
+            <exclude name="**/*-javadoc.jar"/>
+            <exclude name="**/*-sources.jar"/>
+        </fileset>
     </path>
 
     <path id="classpath.jmock">
@@ -87,6 +91,7 @@
             <classpath>
                 <pathelement location="${classesDir}"/>
                 <path refid="classpath.guice"/>
+                <path refid="classpath.junit"/>
                 <path refid="classpath.jmock"/>
             </classpath>
             <formatter type="xml"/>

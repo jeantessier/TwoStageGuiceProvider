@@ -8,8 +8,8 @@ initialize it in turn.
 
 You can download the finalized code from [[TwoStageGuiceProvider.tar.gz][here]].
 
-All example were tested with JUnit 4.5 and jMock 2.5.1 using JDK 1.6.0_07 and
-Guice 2.0.
+All example were tested with JUnit 4.13 and jMock 2.5.1 using JDK 1.8.0_181 and
+Guice 3.0.
 
 ----
 
