@@ -1,6 +1,6 @@
 ---+ Two-Stage Guice Provider
 
-by [[http://jeantessier.com/][Jean Tessier]]
+by [[https://jeantessier.com/][Jean Tessier]]
 
 This document shows how to pass an object between
 [[http://code.google.com/p/google-guice/][Guice]] providers so each one can
